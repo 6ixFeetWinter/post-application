@@ -258,7 +258,7 @@
   width: 100%;
   word-wrap: break-word;
 }
-@media screen and (max-width: 1032px) {
+@media screen and (max-width: 900px) {
   .p-home__profile-area {
     display: none;
   }
