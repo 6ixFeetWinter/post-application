@@ -1,11 +1,13 @@
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { AuthProvider } from "./component/providers/AuthProvider";
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-<<<<<<< Updated upstream:post-app/src/firebase.ts
 import { getAuth } from "firebase/auth";
-=======
-import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
->>>>>>> Stashed changes:posted/src/firebase.ts
+import { getStorage } from "firebase/storage";
+import { RecoilRoot } from "recoil";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAaw4BQ5GdpOHnj9eOsnIQ07Ce7ib9cipc",
@@ -19,10 +21,20 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-export const db = getFirestore(app);
+export const storage = getStorage(app);
 export const auth = getAuth(app);
-<<<<<<< Updated upstream:post-app/src/firebase.ts
-=======
 export const db: any = getFirestore(app);
 export const analytics = getAnalytics(app);
->>>>>>> Stashed changes:posted/src/firebase.ts
+
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
+root.render(
+  <React.StrictMode>
+    <RecoilRoot>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </RecoilRoot>
+  </React.StrictMode>
+);
